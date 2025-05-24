@@ -17,6 +17,7 @@ import type { ILivechatMessageBuilder } from '@rocket.chat/apps-engine/definitio
 import type { UIHelper as _UIHelper } from '@rocket.chat/apps-engine/server/misc/UIHelper.ts';
 
 import * as Messenger from '../../messenger.ts';
+import { randomBytes } from 'node:crypto';
 
 import { BlockBuilder } from '../builders/BlockBuilder.ts';
 import { MessageBuilder } from '../builders/MessageBuilder.ts';
@@ -45,7 +46,7 @@ export class ModifyCreator implements IModifyCreator {
                 get: (_target: unknown, prop: string) => {
                     // It's not worthwhile to make an asynchronous request for such a simple method
                     if (prop === 'createToken') {
-                        return () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                        return () => randomBytes(16).toString('hex');
                     }
 
                     if (prop === 'toJSON') {
@@ -59,6 +60,12 @@ export class ModifyCreator implements IModifyCreator {
                         })
                             .then((response) => response.result)
                             .catch((err) => {
+                                if (err instanceof Error) {
+                                    throw err;
+                                }
+                                if (err?.error?.message) {
+                                    throw new Error(err.error.message);
+                                }
                                 throw new Error(err.error);
                             });
                 },
@@ -81,6 +88,12 @@ export class ModifyCreator implements IModifyCreator {
                                 })
                                     .then((response) => response.result)
                                     .catch((err) => {
+                                        if (err instanceof Error) {
+                                            throw err;
+                                        }
+                                        if (err?.error?.message) {
+                                            throw new Error(err.error.message);
+                                        }
                                         throw new Error(err.error);
                                     }),
             },
@@ -91,7 +104,7 @@ export class ModifyCreator implements IModifyCreator {
         return new Proxy(
             { __kind: 'getEmailCreator' },
             {
-                get: (_target: unknown, prop: string) => 
+                get: (_target: unknown, prop: string) =>
                         (...params: unknown[]) =>
                             prop === 'toJSON'
                                 ? {}
@@ -101,6 +114,12 @@ export class ModifyCreator implements IModifyCreator {
                                 })
                                     .then((response) => response.result)
                                     .catch((err) => {
+                                        if (err instanceof Error) {
+                                            throw err;
+                                        }
+                                        if (err?.error?.message) {
+                                            throw new Error(err.error.message);
+                                        }
                                         throw new Error(err.error);
                                     }),
             }
@@ -111,7 +130,7 @@ export class ModifyCreator implements IModifyCreator {
         return new Proxy(
             { __kind: 'getContactCreator' },
             {
-                get: (_target: unknown, prop: string) => 
+                get: (_target: unknown, prop: string) =>
                         (...params: unknown[]) =>
                             prop === 'toJSON'
                                 ? {}
@@ -121,6 +140,12 @@ export class ModifyCreator implements IModifyCreator {
                                 })
                                     .then((response) => response.result)
                                     .catch((err) => {
+                                        if (err instanceof Error) {
+                                            throw err;
+                                        }
+                                        if (err?.error?.message) {
+                                            throw new Error(err.error.message);
+                                        }
                                         throw new Error(err.error);
                                     }),
             }

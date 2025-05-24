@@ -1,6 +1,5 @@
 import { VoipProvider } from '@rocket.chat/ui-voip';
 import type { ReactNode } from 'react';
-import React from 'react';
 
 import ActionManagerProvider from './ActionManagerProvider';
 import AuthenticationProvider from './AuthenticationProvider/AuthenticationProvider';
@@ -39,9 +38,9 @@ const MeteorProvider = ({ children }: MeteorProviderProps) => (
 						<SessionProvider>
 							<TooltipProvider>
 								<ToastMessagesProvider>
-									<LayoutProvider>
-										<AvatarUrlProvider>
-											<UserProvider>
+									<AvatarUrlProvider>
+										<UserProvider>
+											<LayoutProvider>
 												<AuthenticationProvider>
 													<CustomSoundProvider>
 														<DeviceProvider>
@@ -67,9 +66,9 @@ const MeteorProvider = ({ children }: MeteorProviderProps) => (
 														</DeviceProvider>
 													</CustomSoundProvider>
 												</AuthenticationProvider>
-											</UserProvider>
-										</AvatarUrlProvider>
-									</LayoutProvider>
+											</LayoutProvider>
+										</UserProvider>
+									</AvatarUrlProvider>
 								</ToastMessagesProvider>
 							</TooltipProvider>
 						</SessionProvider>

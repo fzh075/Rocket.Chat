@@ -1,8 +1,8 @@
-import { useUser, useEndpoint } from '@rocket.chat/ui-contexts';
+import { useUser, useEndpoint, useSetting } from '@rocket.chat/ui-contexts';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 
-import { useWebRtcServers } from './useWebRtcServers';
+import { useIceServers } from './useIceServers';
 import VoipClient from '../lib/VoipClient';
 
 type VoipClientParams = {
@@ -20,12 +20,13 @@ export const useVoipClient = ({ enabled = true, autoRegister = true }: VoipClien
 	const voipClientRef = useRef<VoipClient | null>(null);
 
 	const getRegistrationInfo = useEndpoint('GET', '/v1/voip-freeswitch.extension.getRegistrationInfoByUserId');
+	const iceGatheringTimeout = useSetting('VoIP_TeamCollab_Ice_Gathering_Timeout', 5000);
 
-	const iceServers = useWebRtcServers();
+	const iceServers = useIceServers();
 
-	const { data: voipClient, error } = useQuery<VoipClient | null, Error>(
-		['voip-client', enabled, userId, iceServers],
-		async () => {
+	const { data: voipClient, error } = useQuery<VoipClient | null, Error>({
+		queryKey: ['voip-client', enabled, userId, iceServers],
+		queryFn: async () => {
 			if (voipClientRef.current) {
 				voipClientRef.current.clear();
 			}
@@ -59,6 +60,7 @@ export const useVoipClient = ({ enabled = true, autoRegister = true }: VoipClien
 				webSocketURI: websocketPath,
 				connectionRetryCount: Number(10), // TODO: get from settings
 				enableKeepAliveUsingOptionsForUnstableNetworks: true, // TODO: get from settings
+				iceGatheringTimeout,
 			};
 
 			const voipClient = await VoipClient.create(config);
@@ -69,11 +71,9 @@ export const useVoipClient = ({ enabled = true, autoRegister = true }: VoipClien
 
 			return voipClient;
 		},
-		{
-			initialData: null,
-			enabled,
-		},
-	);
+		initialData: null,
+		enabled,
+	});
 
 	useEffect(() => {
 		voipClientRef.current = voipClient;

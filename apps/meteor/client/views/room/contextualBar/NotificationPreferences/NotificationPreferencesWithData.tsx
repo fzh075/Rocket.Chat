@@ -1,7 +1,7 @@
 import type { SelectOption } from '@rocket.chat/fuselage';
 import { useTranslation, useCustomSound } from '@rocket.chat/ui-contexts';
 import type { ReactElement } from 'react';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import NotificationPreferences from './NotificationPreferences';
@@ -20,7 +20,7 @@ const NotificationPreferencesWithData = (): ReactElement => {
 		successMessage: t('Room_updated_successfully'),
 	});
 
-	const customSoundAsset: SelectOption[] | undefined = customSound?.getList()?.map((value) => [value._id, value.name]);
+	const customSoundAsset: SelectOption[] | undefined = customSound.list?.map((value) => [value._id, value.name]);
 
 	const defaultOption: SelectOption[] = [
 		['default', t('Default')],
