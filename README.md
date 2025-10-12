@@ -1,3 +1,68 @@
+This is my feature branch fork from [Rocket.Chat](https://github.com/RocketChat/Rocket.Chat).  
+It implements **Passkey-based WebAuthn authentication** as part of Google Summer of Code 2025.  
+
+---
+
+# GSoC 2025 Final Report
+**Student**: Fang ZiHao
+
+**Mentor**: Dnouv, Julio Araujo
+
+**Project**: Passkey-Based WebAuthn Authentication for Rocket.Chat
+
+**Organization**: Rocket.Chat
+
+**Summary**: The WebAuthn standard, now widely available on modern Android and iOS devices, enable convenient passwordless authentication satisfying 2FA (biometrics and "have device"). Frequently this involves scanning a QR code followed by unintrusive biometrics such as FaceID on iOS. This project aims to integrate WebAuthn in Rocket.Chat authentication to offer a passwordless, secure login experience. The implementation needs to be aligned with Rocket.Chat’s existing authentication system while ensuring backward compatibility with all existing login methods.
+<p align="center">
+  <img width="1000" alt="image" src="https://gist.github.com/user-attachments/assets/25b74fa1-456d-40ce-904d-6b890e51bb32" /><br>
+  <em>Introduction to Passkey on other websites</em>
+</p>
+
+# Demonstration video
+
+<p align="center">
+  <a href="https://drive.google.com/file/d/1b3cIcB1k11LE4NNS-_kToiJ-okYemqIK/view?usp=drive_link">
+    <img src="https://gist.github.com/user-attachments/assets/6bb88e98-79ff-4b5f-b1bd-3aa4f998e39f"
+         alt="image" width="585"><br>
+    <em>Click to watch</em>
+  </a>
+</p>
+
+# What work was done
+
+* Passkeys registration, login, edit and delete 
+* Guide users to register a new passkey on each device 
+* Send an email security alert to the user after the passkeys change 
+* Auto remove passkeys that has not been used for 120 days 
+* Support QR Codes and Bluetooth hybrid transport 
+* Modify authentication modules to support passkey registration and login
+* Update the frontend for seamless passkey interactions 
+* Tags like 'Seen from this browser' and 'Synced'
+
+# Unmerged Pull Requests
+
+* https://github.com/RocketChat/Rocket.Chat/pull/36418
+
+# What's left to do
+
+* Optimization of TODO handling
+* Conduct extensive testing across different devices and browsers
+
+# Acknowledgement
+
+I was fortunate to have two mentors:
+
+* Dnouv: [GitHub](https://github.com/Dnouv)
+* Julio Araujo: [GitHub](https://github.com/julio-rocketchat)
+
+Thank you for your help and your enthusiasm towards the project.
+
+Thanks ❤️
+
+---
+
+> Original project by [Rocket.Chat Team](https://github.com/RocketChat)
+
 <p align="center"> 
   <img  src="https://github.com/RocketChat/Rocket.Chat.Artwork/raw/master/Logos/2020/png/logo-horizontal-red.png" data-canonical-src="https://github.com/RocketChat/Rocket.Chat.Artwork/raw/master/Logos/2020/png/logo-horizontal-red.png" width="400" />
 </p>
