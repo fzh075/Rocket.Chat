@@ -14,7 +14,7 @@ It implements **Passkey-based WebAuthn authentication** as part of Google Summer
 
 **Summary**: The WebAuthn standard, now widely available on modern Android and iOS devices, enable convenient passwordless authentication satisfying 2FA (biometrics and "have device"). Frequently this involves scanning a QR code followed by unintrusive biometrics such as FaceID on iOS. This project aims to integrate WebAuthn in Rocket.Chat authentication to offer a passwordless, secure login experience. The implementation needs to be aligned with Rocket.Chat’s existing authentication system while ensuring backward compatibility with all existing login methods.
 <p align="center">
-  <img width="1000" alt="image" src="https://gist.github.com/user-attachments/assets/25b74fa1-456d-40ce-904d-6b890e51bb32" /><br>
+  <img width="1000" alt="image" src="https://github.com/user-attachments/assets/f7e53d97-649a-4332-9519-8e57d53931ee" /><br>
   <em>Introduction to Passkey on other websites</em>
 </p>
 
@@ -22,7 +22,7 @@ It implements **Passkey-based WebAuthn authentication** as part of Google Summer
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1b3cIcB1k11LE4NNS-_kToiJ-okYemqIK/view?usp=drive_link">
-    <img src="https://gist.github.com/user-attachments/assets/6bb88e98-79ff-4b5f-b1bd-3aa4f998e39f"
+    <img src="https://github.com/user-attachments/assets/deb98cc3-5a55-4ae1-ac6b-20199cffdf41"
          alt="image" width="585"><br>
     <em>Click to watch</em>
   </a>
